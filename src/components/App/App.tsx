@@ -11,7 +11,7 @@ function App() {
       <Header title='AlgaStock'/>
       <Container>    
         <Table
-          
+              
         />
       </Container>
     </div>
