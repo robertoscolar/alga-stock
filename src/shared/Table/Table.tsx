@@ -1,5 +1,5 @@
 import React from "react";
-import organizeData from "../../utils/OrganizeDataForTable";
+import organizeData from "../../utils/organizeDataForTable";
 import './Table.scss'   
 
 
