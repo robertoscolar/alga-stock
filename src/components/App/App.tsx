@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../Header';
 import './App.css';
 import Container from '../../shared/Container';
+import Table from '../../shared/Table';
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
       <Header title='AlgaStock'/>
       <Container>    
-        
+        <Table/>
       </Container>
     </div>
   );
