@@ -3,7 +3,7 @@ import Button from "../../shared/Button";
 
 import Form from "../../shared/Form";
 import Input from "../../shared/Input";
-import { Product } from "../../shared/Table/Table.mockdata";
+import Products, { Product } from "../../shared/Table/Table.mockdata";
 
 declare interface InitialFormState {
   id?: number
@@ -117,7 +117,11 @@ const ProductForm:React.FC<ProductFormProps> = (props) => {
     />
 
     <Button>
-      Submit
+      {
+        form.id 
+          ? 'Update'
+          : 'Submit'
+      }
     </Button>
   </Form>
 }

@@ -6,3 +6,7 @@ button.AppButton {
     border: none;
     padding: 7px 10px;
 }
+
+button.AppButton:hover {
+    background-color: #2087cc;
+}
