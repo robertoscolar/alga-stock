@@ -4,7 +4,7 @@ import './App.css';
 import Container from '../../shared/Container';
 import Table from '../../shared/Table';
 import { TableHeader } from '../../shared/Table';
-import Products from '../../shared/Table/Table.mockdata';
+import Products, { Product } from '../../shared/Table/Table.mockdata';
 import ProductForm, { ProductCreator } from '../Products/ProductForm';
 
 const headers: TableHeader[] = [
@@ -12,6 +12,7 @@ const headers: TableHeader[] = [
   { key:'price', value: 'Price', right: true},
   { key:'stock', value: 'Available Stock', right: true}
 ]
+
 
 function App() {
   const [products, setProducts] = useState(Products)
@@ -27,6 +28,14 @@ function App() {
     ])
   }
 
+  const handleProductUpdate = (newProduct: Product) => {
+    setProducts(products.map(product => 
+      product.id === newProduct.id
+        ? newProduct
+        : product
+      ))
+  }
+
   return (
     <div className="App">
       <Header title='AlgaStock'/>
@@ -37,7 +46,9 @@ function App() {
         />
 
         <ProductForm 
+          form={products[1]}
           onSubmit={handleProductSubmit}
+          onUpdate={handleProductUpdate}
         />
         
       </Container>
