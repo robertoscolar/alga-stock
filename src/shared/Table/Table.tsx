@@ -57,7 +57,7 @@ const Table:React.FC<TableProps>= (props) => {
                                 .map((item,i) => 
                                     item !== '$original'
                                         ?   <td
-                                                key={row.$original.id + i}
+                                                key={row.$original._id + i}
                                                 className={indexedHeaders[item].right ? 'right' : ''}
                                             >
                                                 {row[item]}
@@ -71,15 +71,15 @@ const Table:React.FC<TableProps>= (props) => {
                                 && <td className="actions right">
                                     {
                                        props.onEdit
-                                        && <Button onClick={() => props.onEdit && props.onEdit(row)}>Edit</Button> 
+                                        && <Button onClick={() => props.onEdit && props.onEdit(row.$original)}>Edit</Button> 
                                     }
                                     {
                                        props.onDetail
-                                        && <Button onClick={() => props.onDetail && props.onDetail(row)}>Detail</Button> 
+                                        && <Button onClick={() => props.onDetail && props.onDetail(row.$original)}>Detail</Button> 
                                     }
                                     {
                                        props.onDelete
-                                        && <Button onClick={() => props.onDelete && props.onDelete(row)}>Delete</Button> 
+                                        && <Button onClick={() => props.onDelete && props.onDelete(row.$original)}>Delete</Button> 
                                     }
                                 </td>
                         }
