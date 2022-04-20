@@ -4,6 +4,7 @@ import { createSingleProduct, deleteSingleProduct, getAllProducts, updateSingleP
 import Table, { TableHeader } from "../../shared/Table";
 import { Product } from "../../shared/Table/Table.mockdata";
 import ProductForm, { ProductCreator } from "./ProductForm";
+import {connect} from 'react-redux'
 
 const headers: TableHeader[] = [
   { key: 'id', value: '#' },
@@ -12,14 +13,18 @@ const headers: TableHeader[] = [
   { key: 'stock', value: 'Available Stock', right: true }
 ]
 
-const ProductsCRUD = () => {
-  const [products, setProducts] = useState<Product[]>([])
+declare interface ProductCRUDProps {
+  products: Product[]
+}
+
+const ProductsCRUD:React.FC<ProductCRUDProps> = (props) => {
+  // const [products, setProducts] = useState<Product[]>([])
   const [updatingProduct, setUpdatingProduct] = useState<Product | undefined>()
 
 
   async function fetchData() {
-    const _products = await getAllProducts()
-    setProducts(_products)
+    // const _products = await getAllProducts()
+    // setProducts(_products)
 
   }
 
@@ -91,7 +96,7 @@ const ProductsCRUD = () => {
   return <>
     <Table
       headers={headers}
-      data={products}
+      data={props.products}
       enableActions={true}
       onEdit={handleProductEdit}
       onDetail={handleProductDetail}
@@ -106,4 +111,8 @@ const ProductsCRUD = () => {
   </>
 }
 
-export default ProductsCRUD
+const mapStateToProps = (state:any) => ({
+  products: state.products
+})
+
+export default connect(mapStateToProps)(ProductsCRUD)
