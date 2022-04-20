@@ -5,7 +5,7 @@ import Table, { TableHeader } from "../../shared/Table";
 import { Product } from "../../shared/Table/Table.mockdata";
 import ProductForm, { ProductCreator } from "./ProductForm";
 import {connect, useDispatch} from 'react-redux'
-import { insertNewProduct } from "../../redux/Products/Products.actions";
+import { getProducts, insertNewProduct } from "../../redux/Products/Products.actions";
 
 const headers: TableHeader[] = [
   { key: 'id', value: '#' },
@@ -25,9 +25,14 @@ const ProductsCRUD:React.FC<ProductCRUDProps> = (props) => {
 
 
   async function fetchData() {
+    try {
+      //@ts-ignore
+      dispatch(getProducts())
+    } catch (err:any) {
+      Swal.fire('Oops!', err.message, 'error')
+    }
     // const _products = await getAllProducts()
     // setProducts(_products)
-
   }
 
   useEffect(() => {
